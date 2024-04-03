@@ -1,0 +1,11 @@
+AmazonEC2ContainerRegistryFullAccess
+
+AmazonECS_FullAccess
+
+AWSAppRunnerServicePolicyForECRAccess
+
+AWSCodeDeployRoleForECS
+
+CodeBuildBasePolicy-new-ecs-us-east-1
+
+EC2InstanceProfileForImageBuilderECRContainerBuilds
