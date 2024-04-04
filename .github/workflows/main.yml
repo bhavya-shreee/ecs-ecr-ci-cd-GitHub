@@ -50,4 +50,4 @@ jobs:
 
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster git-hub-actions --service myservice-1 --force-new-deployment --task-definition ${{ steps.create-task-definition.outputs.task-definition }}:latest
+          aws ecs update-service --cluster git-hub-actions --service myservice-1 --force-new-deployment --task-definition ${{ steps.create-task-definition.outputs.task-definition }}
