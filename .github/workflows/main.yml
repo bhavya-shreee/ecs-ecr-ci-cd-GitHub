@@ -37,6 +37,12 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
+      - name: Create ECS task definition
+        id: create-task-definition
+        run: |
+          aws ecs register-task-definition --family mytaskdefinition --container-definitions '[{"name":"mycontainer","image":"'"$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"'","essential":true}]'
+          echo "::set-output name=task-definition::mytaskdefinition"
+
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster git-hub-actions --service myservice-1 --force-new-deployment --task-definition mytaskdefinition:latest
+          aws ecs update-service --cluster git-hub-actions --service myservice-1 --force-new-deployment --task-definition ${{ steps.create-task-definition.outputs.task-definition }}:latest
