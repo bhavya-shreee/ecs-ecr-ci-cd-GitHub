@@ -43,4 +43,4 @@ jobs:
 
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster YOUR_CLUSTER_NAME --service YOUR_SERVICE_NAME --force-new-deployment
+          aws ecs update-service --cluster git-hub-actions --service myservice-1 --force-new-deployment
